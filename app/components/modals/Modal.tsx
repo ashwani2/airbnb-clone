@@ -57,6 +57,11 @@ const Modal: React.FC<ModalProps> = ({
     }
     secondaryAction();
   }, [disabled, secondaryAction]);
+
+  if (!isOpen) {
+    return null;
+  }
+
   return (
     <>
       <div
@@ -94,7 +99,7 @@ const Modal: React.FC<ModalProps> = ({
                 duration-300
                 h-full
                 ${showModal ? "translate-y-0" : "translate-y-full"}
-                ${showModal ? "opacity-100" : "opacity-full"}
+                ${showModal ? "opacity-100" : "opacity-0"}
                 `}
           >
             <div
@@ -159,6 +164,7 @@ const Modal: React.FC<ModalProps> = ({
                     onClick={handleSubmit}
                   />
                 </div>
+                {footer}
               </div>
             </div>
           </div>
